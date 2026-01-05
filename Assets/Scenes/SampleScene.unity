@@ -316,6 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796791553}
   - component: {fileID: 796791554}
+  - component: {fileID: 796791555}
   m_Layer: 0
   m_Name: GamePlayRoot
   m_TagString: Untagged
@@ -383,6 +384,29 @@ MonoBehaviour:
       Data: 
   _gridViewPrefab: {fileID: 5405013015749502171, guid: dc1af1ac0557acf4da18b4f5467d936d, type: 3}
   _gridViewParent: {fileID: 796791553}
+  _pathRenderer: {fileID: 0}
+--- !u!114 &796791555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796791551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156f48307e69ab843adca463878b1aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.PathRenderer
+  _pathSprite: {fileID: -8403555016071631063, guid: 6d9a0c57959de9043ac2d8e8f1c79e5a, type: 3}
+  _pathColor: {r: 1, g: 1, b: 0, a: 0.8}
+  _pathScale: 0.3
+  _sortingOrder: 5
+  _lightUpDelay: 0.05
+  _fadeInDuration: 0.15
+  _stayDuration: 0.4
+  _fadeOutDuration: 0.25
+  _useScaleAnimation: 1
+  _scaleFrom: 0.3
 --- !u!1 &841703755
 GameObject:
   m_ObjectHideFlags: 0

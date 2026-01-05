@@ -302,7 +302,8 @@ MonoBehaviour:
   - {fileID: 4130640169021434097, guid: 99d1bf6111fb3c542bb5da7cec4e77ff, type: 3}
   - {fileID: 7028616704906629411, guid: 896d0b9b1cc01214393d4f303ced5cbe, type: 3}
   - {fileID: 4113829005332862926, guid: 38d63d2ed9e26834ba00069f5ccacd23, type: 3}
-  _eliminatedSprite: {fileID: -410933003865413418, guid: 7dbcb58a3c5f95645861049ae0c4415d, type: 3}
+  _eliminatedSpriteWhite: {fileID: -3911992942099193520, guid: af87e7b9833fc9d43bab05d20e82b828, type: 3}
+  _eliminatedSpriteBlack: {fileID: -4853439779038057182, guid: e2557db8e2dc9f44cbbdde5c10bdf62c, type: 3}
   _showASide: 1
   _contentRenderer: {fileID: 5517777645816625800}
   _hoverOverlay: {fileID: 6320831580655455871}

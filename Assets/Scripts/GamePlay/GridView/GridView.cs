@@ -122,6 +122,37 @@ namespace GamePlay
             Debug.Log($"[GridView] Flipped {flippedCount} tiles to {(showASide ? "A-Side" : "B-Side")}");
         }
         
+        /// <summary>
+        /// 计算网格坐标对应的世界坐标（中心对齐）
+        /// 支持外圈虚拟格子（row/col 为 -1 或 10）
+        /// </summary>
+        /// <param name="row">行号（-1 到 10）</param>
+        /// <param name="col">列号（-1 到 10）</param>
+        /// <returns>世界坐标</returns>
+        public Vector3 CalculateWorldPosition(int row, int col)
+        {
+            // 计算中心对齐的偏移量
+            float pivotOffsetX = (GRID_SIZE - 1) * 0.5f;
+            float pivotOffsetY = (GRID_SIZE - 1) * 0.5f;
+            
+            // 计算相对于中心的坐标
+            float x = (col - pivotOffsetX) * (_cellSize.x + _spacing.x);
+            float y = (row - pivotOffsetY) * (_cellSize.y + _spacing.y);
+            
+            // 加上 Transform 的世界坐标
+            return _gridContainer.position + new Vector3(x, y, 0);
+        }
+        
+        /// <summary>
+        /// 获取单元格尺寸（供 PathRenderer 使用）
+        /// </summary>
+        public Vector2 GetCellSize() => _cellSize;
+        
+        /// <summary>
+        /// 获取格子间距（供 PathRenderer 使用）
+        /// </summary>
+        public Vector2 GetSpacing() => _spacing;
+        
         #endregion
 
         #region Private Methods
@@ -194,24 +225,6 @@ namespace GamePlay
                     itemView.SetVisible(false);
                 }
             }
-        }
-        
-        /// <summary>
-        /// 计算网格坐标对应的世界坐标（中心对齐）
-        /// </summary>
-        private Vector3 CalculateWorldPosition(int row, int col)
-        {
-            // 计算中心对齐的偏移量
-            // 对于10x10网格，中心点在(4.5, 4.5)
-            float pivotOffsetX = (GRID_SIZE - 1) * 0.5f;
-            float pivotOffsetY = (GRID_SIZE - 1) * 0.5f;
-            
-            // 计算相对于中心的坐标
-            float x = (col - pivotOffsetX) * (_cellSize.x + _spacing.x);
-            float y = (row - pivotOffsetY) * (_cellSize.y + _spacing.y);
-            
-            // 加上Transform的世界坐标
-            return _gridContainer.position + new Vector3(x, y, 0);
         }
         
         #endregion

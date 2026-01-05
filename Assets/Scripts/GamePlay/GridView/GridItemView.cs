@@ -27,8 +27,12 @@ namespace GamePlay
         private Sprite[] _bSideSprites = new Sprite[5];
         
         [SerializeField]
-        [Tooltip("已消除状态的精灵图（当向上数字为0时显示）")]
-        private Sprite _eliminatedSprite;
+        [Tooltip("已消除状态的精灵图（白色，当向上数字为0时显示）")]
+        private Sprite _eliminatedSpriteWhite;
+        
+        [SerializeField]
+        [Tooltip("已消除状态的精灵图（黑色，当向上数字为0时显示）")]
+        private Sprite _eliminatedSpriteBlack;
         
         [SerializeField]
         [Tooltip("当前显示A面还是B面")]
@@ -286,7 +290,7 @@ namespace GamePlay
             // 如果向上的数字为0，表示已消除，返回消除状态Sprite
             if (upwardValue == 0)
             {
-                return _eliminatedSprite;
+                return _showASide?_eliminatedSpriteWhite:_eliminatedSpriteBlack;
             }
             
             if (_showASide)

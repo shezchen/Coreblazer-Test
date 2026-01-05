@@ -31,6 +31,12 @@ namespace GamePlay
         /// </summary>
         private GridView _currentGridView;
         
+        /// <summary>
+        /// 路径渲染器（与 GamePlayManager 挂在同一个物体上）
+        /// </summary>
+        [SerializeField, HideInInspector]
+        private PathRenderer _pathRenderer;
+        
         #endregion
         
         #region 数据相关
@@ -100,6 +106,28 @@ namespace GamePlay
             
             // 渲染网格数据
             _currentGridView.RenderGrid(in BoardDictionary);
+            
+            // 初始化路径渲染器
+            EnsurePathRenderer();
+        }
+        
+        /// <summary>
+        /// 确保路径渲染器存在并初始化
+        /// </summary>
+        private void EnsurePathRenderer()
+        {
+            // 获取或添加 PathRenderer 组件
+            if (_pathRenderer == null)
+            {
+                _pathRenderer = GetComponent<PathRenderer>();
+                if (_pathRenderer == null)
+                {
+                    _pathRenderer = gameObject.AddComponent<PathRenderer>();
+                }
+            }
+            
+            // 初始化（传入 GridView 引用）
+            _pathRenderer.Initialize(_currentGridView);
         }
 
         public void ClearRoot()
@@ -287,8 +315,17 @@ namespace GamePlay
         /// </summary>
         /// <param name="pos1">第一个格子的坐标</param>
         /// <param name="pos2">第二个格子的坐标</param>
-        private void OnMatchSuccess((int, int) pos1, (int, int) pos2)
+        private async void OnMatchSuccess((int, int) pos1, (int, int) pos2)
         {
+            // 获取匹配路径
+            var path = LinkPathFinder.FindPath(pos1, pos2, IsPositionPassable);
+            
+            // 显示路径动画（依次亮起 → 停留 → 消失）
+            if (path != null && path.Count > 0 && _pathRenderer != null)
+            {
+                await _pathRenderer.ShowPathAnimation(path);
+            }
+            
             // 1. 消除第一个格子
             EliminateTile(pos1);
             
