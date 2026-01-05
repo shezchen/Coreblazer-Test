@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_UI_BackgroundBlurGradient
+  m_Shader: {fileID: 4800000, guid: ae4733c62eeed8d4baf8d828c15ac1de, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlurStrength: 5.45
+    - _ColorMask: 15
+    - _ColorVariation: 0.3
+    - _DomainRotation: 17
+    - _GradientScale: 1.5
+    - _Jitter: 0.05
+    - _NoiseLacunarity: 2
+    - _NoiseOctaves: 4
+    - _NoisePersistence: 0.5
+    - _NoiseScale: 1.09
+    - _RidgedWeight: 0.35
+    - _Seed: 27.89
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _TimeSeedStrength: 0.2
+    - _TimeSpeed: 2.26
+    - _WarpScale: 2.5
+    - _WarpScale2: 3.7
+    - _WarpStrength: 0.45
+    - _WarpStrength2: 0.3
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 0, g: 0.143749, b: 0.7783017, a: 1}
+    - _Color2: {r: 1, g: 0.51415086, b: 0.5254098, a: 1}
+    - _Color3: {r: 0.1811546, g: 0.68235296, b: 0.1372549, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
