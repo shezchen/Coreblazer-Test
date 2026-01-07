@@ -1,5 +1,4 @@
-﻿using System;
-using Architecture.GameSound;
+﻿using Architecture.GameSound;
 using Architecture.Language;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -7,7 +6,6 @@ using R3;
 using TMPro;
 using Tools;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 using VContainer;
 

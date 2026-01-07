@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using DG.Tweening;

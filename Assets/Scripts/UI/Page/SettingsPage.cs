@@ -1,5 +1,4 @@
-﻿using System;
-using Architecture.GameSound;
+﻿using Architecture.GameSound;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using R3;
