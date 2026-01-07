@@ -40,8 +40,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5964d5841dba4f0498817a9acb83d745
+    m_Address: Popup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ee620a6cc724de439d4a99013e54479
+    m_Address: GameTipPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c7c3f7c7c9edd2439ca127033a79e9d
+    m_Address: Match
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c77e855de94bd99499a53b1883334ef6
     m_Address: Test SFX 001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebbf3bfbc974f8e40ba596f86ed8a9b3
+    m_Address: Monochrome Match Grid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6c6e131875bb2645a3d4149c2f85f11
+    m_Address: GridItemSelected
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -16,9 +16,9 @@
     {
         public (int, int) Position;
 
-        public GridDeSelectedEvent((int, int) position)
+        public GridDeSelectedEvent((int, int)? position)
         {
-            Position = position;
+            Position = position ?? (-1,-1);
         }
     }
 }

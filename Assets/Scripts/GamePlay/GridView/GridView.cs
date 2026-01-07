@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using Architecture;
+using GamePlay.Events;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using VContainer;
 
 namespace GamePlay
 {
@@ -70,7 +73,7 @@ namespace GamePlay
         #endregion
 
         #region Public Methods
-        
+
         /// <summary>
         /// 渲染网格（首次调用会初始化，后续仅更新内容）
         /// </summary>

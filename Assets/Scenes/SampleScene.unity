@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c8fc77bbc2464da0c0e3fb66e554f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Architecture.GameFlowController
-  skipLaunching: 1
+  skipLaunching: 0
 --- !u!4 &225012945
 Transform:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &796791553
 Transform:
   m_ObjectHideFlags: 0
@@ -752,6 +752,10 @@ PrefabInstance:
     - target: {fileID: 3572473409069421692, guid: dc1af1ac0557acf4da18b4f5467d936d, type: 3}
       propertyPath: m_Name
       value: GridView
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572473409069421692, guid: dc1af1ac0557acf4da18b4f5467d936d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6108564287657268575, guid: dc1af1ac0557acf4da18b4f5467d936d, type: 3}
       propertyPath: m_LocalPosition.x

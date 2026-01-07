@@ -32,6 +32,7 @@ namespace Architecture
         [Inject] private IAudioService _audioService;
         [Inject] private UIManager _uiManager;
         [Inject] private EventBus _eventBus;
+        [Inject] private GameFlowController _gameFlowController;
         
         private UIBinder _uiBinder;
         
@@ -59,10 +60,20 @@ namespace Architecture
             }).AddTo(this);
             
             _uiBinder = GetComponent<UIBinder>();
+            _uiBinder.Get<Button>("Button_Start").OnClickAsObservable().Subscribe(async (_) =>
+            {
+                _audioService.PlaySfxAsync(AudioClipName.SFX.ClickSound);
+                _gameFlowController.StartGamePLay();
+            }).AddTo(this);
             _uiBinder.Get<Button>("Button_Settings").OnClickAsObservable().Subscribe(async (_) =>
             {
                 _audioService.PlaySfxAsync(AudioClipName.SFX.ClickSound);
                 await _uiManager.ShowSettingsPage();
+            }).AddTo(this);
+            _uiBinder.Get<Button>("Button_Quit").OnClickAsObservable().Subscribe(async (_) =>
+            {
+                _audioService.PlaySfxAsync(AudioClipName.SFX.ClickSound);
+                Application.Quit();
             }).AddTo(this);
         }
         

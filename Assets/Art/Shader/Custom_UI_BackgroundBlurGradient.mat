@@ -53,9 +53,9 @@ Material:
     - _WarpStrength: 0.45
     - _WarpStrength2: 0.3
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 0.143749, b: 0.7783017, a: 1}
-    - _Color2: {r: 1, g: 0.51415086, b: 0.5254098, a: 1}
-    - _Color3: {r: 0.1811546, g: 0.68235296, b: 0.1372549, a: 1}
+    - _Color: {r: 0.96226406, g: 0.96226406, b: 0.96226406, a: 1}
+    - _Color1: {r: 0, g: 0, b: 0, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color3: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

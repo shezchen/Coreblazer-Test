@@ -18,6 +18,7 @@ public static class AddressableKeys
         public const string SFX_Click_001 = "SFX_Click 001";
         public const string LanguagePagePrefab = "LanguagePagePrefab";
         public const string MainScenePrefab = "MainScenePrefab";
+        public const string GameTipPrefab = "GameTipPrefab";
         public const string Test_SFX_001 = "Test SFX 001";
         public const string Demo_TestTMP = "Demo_TestTMP";
     }

@@ -42,7 +42,7 @@ namespace Architecture
             _gamePlayManager.gameObject.SetActive(true);
             _gamePlayManager.ResetManager();//先重置数据层
             _gamePlayManager.LoadGamePlay();
-
+            _uiManager.ShowGameTip();
         }
 
         [Button("ExitGamePlay")]

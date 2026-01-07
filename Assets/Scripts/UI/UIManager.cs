@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Architecture.GameSound;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,14 +13,16 @@ namespace Architecture
     public class UIManager:ManagerNeedInitializeBase
     {
         private UIRoot _uiRoot;
+        private IAudioService _audioService;
         
         private AsyncOperationHandle<GameObject> _handleMainScenePrefab;
         private AsyncOperationHandle<GameObject> _handleLanguagePagePrefab;
         private AsyncOperationHandle<GameObject> _handleSettingsPagePrefab;
         
-        public UIManager(UIRoot root)
+        public UIManager(UIRoot root,IAudioService service)
         {
             _uiRoot = root;
+            _audioService = service;
         }
 
         public override async UniTask Init()
@@ -59,6 +62,12 @@ namespace Architecture
             ScopeRef.LifetimeScope.Container.InjectGameObject(instance);
             var page = instance.GetComponent<SettingsPage>();
             await page.Display();
+        }
+
+        public async UniTask ShowGameTip()
+        {
+            var go = await Addressables.LoadAssetAsync<GameObject>(AddressableKeys.Assets.GameTipPrefab);
+            var instance = Object.Instantiate(go, _uiRoot.transform);
         }
     }
 }

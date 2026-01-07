@@ -1,4 +1,5 @@
 ﻿using System;
+using Architecture.GameSound;
 using Architecture.Language;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -23,6 +24,7 @@ namespace Architecture
 
         [Inject] private EventBus _eventBus;
         [Inject] private UIManager _uiManager;
+        [Inject] private IAudioService _audioService;
         private UIBinder _uiBinder;
         private CanvasGroup _canvasGroup;
         
@@ -77,6 +79,7 @@ namespace Architecture
 
         public override async UniTask Hide()
         {
+            await _audioService.PlayBgmAsync("Monochrome Match Grid");
             await _canvasGroup.FadeOut(fadeDuration).AsyncWaitForCompletion();
             _eventBus.Publish(new PageHide(typeof(LanguagePage)));
             Destroy(gameObject);

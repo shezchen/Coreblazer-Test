@@ -1,8 +1,11 @@
 using Architecture;
+using Architecture.GameSound;
 using GamePlay.Events;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using VContainer;
+using DG.Tweening;
+using Tools;
 
 namespace GamePlay
 {
@@ -55,6 +58,21 @@ namespace GamePlay
         [Tooltip("选中效果子物体（点击选中后激活）")]
         private GameObject _selectedOverlay;
         
+        [SerializeField, ChildGameObjectsOnly]
+        [Tooltip("错误边框渲染器（匹配失败时显示红色边框）")]
+        private SpriteRenderer _errorBorderRenderer;
+        
+        #endregion
+        
+        #region Error Feedback Settings
+        
+        [Title("Error Feedback")]
+        [SerializeField, Range(0.3f, 2f), Tooltip("错误边框渐变消失的时长（秒）")]
+        private float _errorBorderFadeDuration = 0.8f;
+        
+        [SerializeField, Tooltip("错误边框的颜色")]
+        private Color _errorBorderColor = Color.red;
+        
         #endregion
 
         #region Runtime Data
@@ -92,6 +110,7 @@ namespace GamePlay
         #endregion
 
         [Inject] private EventBus _eventBus;
+        [Inject] private IAudioService _audioService;
 
         #region Unity Lifecycle
         
@@ -124,6 +143,12 @@ namespace GamePlay
                 _selectedOverlay.SetActive(false);
             }
             
+            // 默认禁用错误边框
+            if (_errorBorderRenderer != null)
+            {
+                _errorBorderRenderer.enabled = false;
+            }
+            
             ScopeRef.LifetimeScope.Container.Inject(this);
         }
         
@@ -151,6 +176,12 @@ namespace GamePlay
             if (_selectedOverlay != null)
             {
                 _selectedOverlay.SetActive(false);
+            }
+            
+            // 确保错误边框被禁用
+            if (_errorBorderRenderer != null)
+            {
+                _errorBorderRenderer.enabled = false;
             }
         }
         
@@ -211,6 +242,10 @@ namespace GamePlay
         public void SetSelected(bool selected)
         {
             _isSelected = selected;
+            if (selected)
+            {
+                _audioService.PlaySfxAsync("GridItemSelected");
+            }
             
             // 激活/禁用选中效果Overlay
             if (_selectedOverlay != null)
@@ -273,6 +308,37 @@ namespace GamePlay
             UpdateContent(_currentContent);
             
             return true;
+        }
+        
+        /// <summary>
+        /// 显示错误边框动画（匹配失败时调用）
+        /// 红色边框从完全不透明渐变到完全透明并消失
+        /// </summary>
+        public void ShowErrorBorder()
+        {
+            if (_errorBorderRenderer == null)
+            {
+                Debug.LogWarning($"[GridItemView] ErrorBorderRenderer is not assigned on {gameObject.name}");
+                return;
+            }
+            
+            // 先终止该渲染器上之前未完成的渐变动画
+            _errorBorderRenderer.KillTweens();
+            
+            // 设置边框颜色为红色（完全不透明）
+            _errorBorderRenderer.color = _errorBorderColor;
+            _errorBorderRenderer.enabled = true;
+            
+            // 渐变透明度从 1 到 0
+            _errorBorderRenderer.FadeTo(0f, _errorBorderFadeDuration, Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    // 渐变完成后禁用边框渲染器
+                    if (_errorBorderRenderer != null)
+                    {
+                        _errorBorderRenderer.enabled = false;
+                    }
+                });
         }
         
         #endregion

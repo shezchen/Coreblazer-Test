@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Architecture;
+using Architecture.GameSound;
 using Cysharp.Threading.Tasks;
 using GamePlay.Events;
 using R3;
@@ -53,6 +54,7 @@ namespace GamePlay
         #endregion
 
         [Inject] private EventBus _eventBus;
+        [Inject] private IAudioService _audioService;
         private InputSystem_Actions _inputSystemActions;
         
         /// <summary>
@@ -87,6 +89,11 @@ namespace GamePlay
             _disposableBag.Dispose();
         }
 
+        public void OnBackgroundClicked()
+        {
+            _eventBus.Publish(new GridDeSelectedEvent(_previousSelectedPosition));
+        }
+        
         public void ResetManager()
         {
             SetBoard();
@@ -251,6 +258,10 @@ namespace GamePlay
         /// </summary>
         private void OnGridDeSelected(GridDeSelectedEvent evt)
         {
+            if (evt.Position == (-1,-1))
+            {
+                return;
+            }
             Debug.Log($"[GamePlayManager] Grid deselected at ({evt.Position.Item1}, {evt.Position.Item2})");
             
             // 取消格子的选中状态
@@ -325,6 +336,8 @@ namespace GamePlay
             {
                 await _pathRenderer.ShowPathAnimation(path);
             }
+
+            _audioService.PlaySfxAsync("Popup");
             
             // 1. 消除第一个格子
             EliminateTile(pos1);
@@ -343,20 +356,37 @@ namespace GamePlay
         }
         
         /// <summary>
-        /// 匹配失败：取消选中状态
+        /// 匹配失败：显示错误反馈并取消选中状态
         /// </summary>
         /// <param name="pos1">第一个格子的坐标</param>
         /// <param name="pos2">第二个格子的坐标</param>
         private void OnMatchFailed((int, int) pos1, (int, int) pos2)
         {
-            // 1. 取消两个格子的选中状态
+            // 1. 显示错误边框反馈
+            ShowErrorBorderForTile(pos1);
+            ShowErrorBorderForTile(pos2);
+            
+            // 2. 取消两个格子的选中状态
             ClearTileSelection(pos1);
             ClearTileSelection(pos2);
             
-            // 2. 清空之前选中的坐标
+            // 3. 清空之前选中的坐标
             _previousSelectedPosition = null;
             
-            Debug.Log($"[GamePlayManager] Match failed, selections cleared.");
+            Debug.Log($"[GamePlayManager] Match failed, error borders shown and selections cleared.");
+        }
+        
+        /// <summary>
+        /// 显示指定格子的错误边框
+        /// </summary>
+        /// <param name="pos">格子坐标</param>
+        private void ShowErrorBorderForTile((int, int) pos)
+        {
+            var item = _currentGridView?.GetGridItem(pos.Item1, pos.Item2);
+            if (item != null)
+            {
+                item.ShowErrorBorder();
+            }
         }
         
         /// <summary>

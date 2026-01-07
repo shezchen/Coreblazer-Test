@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
+using Architecture;
+using Architecture.GameSound;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay
 {
@@ -83,6 +87,8 @@ namespace GamePlay
         /// 是否正在播放动画
         /// </summary>
         private bool _isAnimating;
+
+        [Inject] private IAudioService _audioService;
         
         #endregion
         
@@ -179,7 +185,12 @@ namespace GamePlay
         #endregion
         
         #region 私有方法
-        
+
+        private void Awake()
+        {
+            ScopeRef.LifetimeScope.Container.Inject(this);
+        }
+
         /// <summary>
         /// 创建路径块
         /// </summary>
@@ -244,6 +255,8 @@ namespace GamePlay
                 // 渐现动画
                 renderer.DOColor(_pathColor, _fadeInDuration)
                     .SetEase(Ease.OutQuad);
+                
+                _audioService.PlaySfxAsync("Popup");
                 
                 // 缩放动画（如果启用）
                 if (_useScaleAnimation)

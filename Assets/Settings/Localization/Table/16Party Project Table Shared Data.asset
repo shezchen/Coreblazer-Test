@@ -51,6 +51,30 @@ MonoBehaviour:
     m_Key: Finish
     m_Metadata:
       m_Items: []
+  - m_Id: 8977379954561024
+    m_Key: Game_Tip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8978216416219136
+    m_Key: I_Know
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355741780807680
+    m_Key: About_Author
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355804477263872
+    m_Key: GetContact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355848077053952
+    m_Key: Coreblazer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9366178563919872
+    m_Key: SourceCode
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 609712914862080
-    m_Localized: Settings
+    m_Localized: About
     m_Metadata:
       m_Items: []
   - m_Id: 609874420731904
@@ -52,6 +52,33 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 691455739072512
     m_Localized: Finish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8977379954561024
+    m_Localized: 'Only numbers with a sum of 11 can be eliminated!
+
+      Press the
+      spacebar to flip the chessboard ..'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8978216416219136
+    m_Localized: I see!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355848077053952
+    m_Localized: Coreblazer's Selection Testing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355804477263872
+    m_Localized: Contact Me
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355741780807680
+    m_Localized: Developer Information
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9366178563919872
+    m_Localized: Source Code
     m_Metadata:
       m_Items: []
   references:
